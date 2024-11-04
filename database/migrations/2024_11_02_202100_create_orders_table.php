@@ -26,6 +26,7 @@ return new class extends Migration
             $table->integer('shipping_cost');
             $table->enum('status', array_column(OrderStatus::cases(), 'value'));
             $table->string('note')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
 

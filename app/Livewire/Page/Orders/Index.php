@@ -5,8 +5,8 @@ namespace App\Livewire\Page\Orders;
 use App\Models\Order;
 use Livewire\Component;
 use Livewire\WithPagination;
-use Livewire\Attributes\Lazy;
 use Livewire\WithoutUrlPagination;
+use Illuminate\Support\Facades\Auth;
 
 
 class Index extends Component
@@ -15,15 +15,19 @@ class Index extends Component
 
     public function orders()
     {
-        $credentials =
-            array(
-                'email' => '',
-                'password' => '',
-            );
+        // $credentials =
+        //     array(
+        //         'email' => 'christina04@example.org',
+        //         'password' => 'admin',
+        //     );
 
-        return Order::query()
-
-            ->paginate(5);
+        // if (Auth::attempt($credentials)) {
+        //     session()->regenerate();
+        // }
+        $query = Auth::user()->is_employee ?
+            Auth::user()->employee->orders() :
+            Auth::user()->employer->orders();
+        return $query->paginate(5);
     }
 
     public function deleteOrder(Order $order)

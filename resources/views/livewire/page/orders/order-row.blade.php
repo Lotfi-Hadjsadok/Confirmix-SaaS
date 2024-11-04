@@ -58,16 +58,19 @@
             </div>
         </td>
 
-        <td class="w-full col-span-3 md:p-4 md:w-fit">
-            <select required wire:model='form.employee' wire:change='updateEmployee()'
-                class="w-full text-xs rounded-lg dark:bg-surface-alt">
-                <option selected value="">{{ __('Switch Employee') }}</option>
-                @foreach ($order->employer->employees as $employee)
-                    <option @selected($employee->id == $order->employee_id) value="{{ $employee->id }}">{{ $employee->user->name }}
-                    </option>
-                @endforeach
-            </select>
-        </td>
+        @if (Auth::user()->is_employer)
+            <td class="w-full col-span-3 md:p-4 md:w-fit">
+                <select required wire:model='form.employee' wire:change='updateEmployee()'
+                    class="w-full text-xs rounded-lg dark:bg-surface-alt">
+                    <option selected disabled value="">{{ __('Switch Employee') }}</option>
+                    @foreach (Auth::user()->employer->employees as $employee)
+                        <option @selected($employee->id == $order->employee_id) value="{{ $employee->id }}">{{ $employee->user->name }}
+                        </option>
+                    @endforeach
+                </select>
+            </td>
+        @endif
+
         <td class="w-full col-span-3 md:w-32">
             <form class="relative h-9 md:p-4 md:h-0">
                 <select wire:loading.attr='disabled' wire:model='form.status' wire:change='updateStatus()'

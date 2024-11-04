@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
+
 return [
 
     /*
@@ -124,6 +126,7 @@ return [
     ],
     'aliases' => [
         'OrderStatus' => App\Enums\OrderStatus::class,
+        'Auth' => Auth::class,
     ]
 
 ];

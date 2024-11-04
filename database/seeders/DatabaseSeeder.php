@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Employee;
+use App\Models\Employer;
 use App\Models\User;
 use Database\Factories\OrderFactory;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -18,7 +20,8 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-
-        OrderFactory::new()->count(10)->create();
+        Employee::factory()->create();
+        Employer::factory()->create();
+        OrderFactory::new()->count(50)->create();
     }
 }

@@ -29,18 +29,21 @@ class OrderRow extends Component
 
     public function updateStatus()
     {
+        $this->authorize('update', $this->order);
         $this->form->updateStatus();
         $this->refreshOrderWithToast();
     }
 
     public function updateNote()
     {
+        $this->authorize('update', $this->order);
         $this->form->updateNote();
         $this->refreshOrderWithToast();
     }
 
     public function updateEmployee()
     {
+        $this->authorize('update-employee', $this->order);
         $this->form->updateEmployee();
         $this->refreshOrderWithToast();
     }

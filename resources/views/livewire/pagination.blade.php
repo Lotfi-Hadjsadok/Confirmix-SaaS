@@ -12,7 +12,7 @@
                 <span class="relative z-0 flex gap-5 rounded-md shadow-sm rtl:flex-row-reverse">
                     @if (!$paginator->onFirstPage())
                         <button rel="prev" wire:click="previousPage" wire:loading.attr="disabled"
-                            class="relative inline-flex items-center px-2 py-2 -ml-px text-sm font-medium leading-5 text-gray-500 bg-white border border-gray-300 rounded-l-md focus:z-10 focus:outline-none dark:bg-slate-500 dark:text-gray-900 dark:border-slate-500"
+                            class="relative inline-flex items-center px-2 py-2 -ml-px text-sm font-medium leading-5 text-gray-500 bg-white border border-gray-300 rounded-l-md focus:z-10 focus:outline-none dark:bg-gray-300 dark:text-gray-900 dark:border-gray-300"
                             aria-label="{{ __('pagination.previous') }}">
                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd"
@@ -26,7 +26,7 @@
                     {{-- Next Page Link --}}
                     @if ($paginator->hasMorePages())
                         <button wire:click="nextPage" rel="next" wire:loading.attr="disabled"
-                            class="relative inline-flex items-center px-2 py-2 -ml-px text-sm font-medium leading-5 text-gray-500 bg-white border border-gray-300 rounded-r-md focus:z-10 focus:outline-none dark:bg-slate-500 dark:text-surface-alt dark:border-slate-500 "
+                            class="relative inline-flex items-center px-2 py-2 -ml-px text-sm font-medium leading-5 text-gray-500 bg-white border border-gray-300 rounded-r-md focus:z-10 focus:outline-none dark:bg-gray-300 dark:text-surface-alt dark:border-gray-300 "
                             aria-label="{{ __('pagination.next') }}">
                             {{ __('Next') }}
                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">

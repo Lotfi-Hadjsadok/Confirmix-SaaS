@@ -28,8 +28,8 @@ class OrderFactory extends Factory
         return [
             'client_id' => Client::factory(),
             'product_id' => Product::factory(),
-            'employee_id' => Employee::factory(),
-            'employer_id' => Employer::factory(),
+            'employee_id' => 1,
+            'employer_id' => 1,
             'quantity' => $this->faker->numberBetween(1, 50),
             'product_price' => $this->faker->numberBetween(1000, 10000),
             'total_price' => $this->faker->numberBetween(1000, 10000),
