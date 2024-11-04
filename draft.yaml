@@ -1,0 +1,32 @@
+models:
+  Client:
+    name: string
+    state: string
+    city: string
+    phone: string
+
+  Product:
+    name: string
+
+  Order:
+    client_id: id foreign:clients
+    product_id: id foreign:products
+    employee_id: id foreign:employees
+    employer_id: id foreign:employers
+    quantity: integer
+    product_price: integer
+    total_price: integer
+    shipping_cost: integer
+    status: string
+    note: string
+
+  Employer:
+    user_id: id foreign:users
+    relationships:
+      hasMany: Employee
+
+  Employee:
+    user_id: id foreign:users
+    employer_id: id foreign:employers
+    relationships:
+      belongsTo: Employer

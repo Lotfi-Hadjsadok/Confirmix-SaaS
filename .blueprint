@@ -1,0 +1,22 @@
+created:
+    - database/factories/ClientFactory.php
+    - database/factories/ProductFactory.php
+    - database/factories/OrderFactory.php
+    - database/factories/EmployerFactory.php
+    - database/factories/EmployeeFactory.php
+    - database/migrations/2024_11_02_202058_create_clients_table.php
+    - database/migrations/2024_11_02_202059_create_products_table.php
+    - database/migrations/2024_11_02_202100_create_orders_table.php
+    - database/migrations/2024_11_02_202101_create_employers_table.php
+    - database/migrations/2024_11_02_202102_create_employees_table.php
+    - app/Models/Client.php
+    - app/Models/Product.php
+    - app/Models/Order.php
+    - app/Models/Employer.php
+    - app/Models/Employee.php
+models:
+    Client: { name: string, state: string, city: string, phone: string }
+    Product: { name: string }
+    Order: { client_id: 'id foreign:clients', product_id: 'id foreign:products', employee_id: 'id foreign:employees', employer_id: 'id foreign:employers', quantity: integer, product_price: integer, total_price: integer, shipping_cost: integer, status: 'enum:pending,processing,completed,canceled' }
+    Employer: { user_id: 'id foreign:users', relationships: { hasMany: Employee } }
+    Employee: { user_id: 'id foreign:users', employer_id: 'id foreign:employers', relationships: { belongsTo: Employer } }
