@@ -14,7 +14,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="p-20 mx-auto dark:text-gray-300 dark:bg-surface-dark">
+<body class="px-10 py-5 mx-auto md:p-20 dark:text-gray-300 dark:bg-surface-dark">
     {{ $slot }}
 </body>
 

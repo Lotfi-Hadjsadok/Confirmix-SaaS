@@ -12,3 +12,8 @@
 input[type="checkbox"] {
 @apply rounded focus:ring-primary focus:ring-offset-0 text-primary ring-0 bg-surface-alt;
 }
+
+
+input,select,textarea{
+    @apply  dark:focus:!ring-surface-dark dark:focus:!border-surface-dark;
+}

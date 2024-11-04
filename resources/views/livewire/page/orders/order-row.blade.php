@@ -1,4 +1,4 @@
-    <tr class="*:p-0 relative grid items-center gap-5 p-4 md:p-0 grid-cols-3 md:table-row">
+    <tr class="*:p-0 even:bg-surface-alt  relative grid items-center gap-5 p-4 md:p-0 grid-cols-3 md:table-row">
         <td class="hidden md:table-cell">
             <!-- Loading -->
             <div wire:loading.delay class="absolute inset-0 z-20 opacity-50 bg-surface-alt"></div>
@@ -51,7 +51,7 @@
                 </p>
             </div>
         </td>
-        <td class="md:min-w-32">
+        <td class="md:min-w-32 ">
             <div class="flex flex-col md:p-4 ">
                 <textarea wire:model="form.note" wire:change='updateNote()' placeholder="{{ __('Note') }}"
                     class="text-xs  [&:not(:placeholder-shown)]:border-primary dark:[&:not(:placeholder-shown)]:border-primary-dark  resize-none md:w-32 dark:bg-surface-alt">{{ $order->note }}</textarea>
@@ -59,9 +59,9 @@
         </td>
 
         @if (Auth::user()->is_employer)
-            <td class="w-full col-span-3 md:p-4 md:w-fit">
+            <td class="w-full col-span-3 md:p-4 md:w-fit ">
                 <select required wire:model='form.employee' wire:change='updateEmployee()'
-                    class="w-full text-xs rounded-lg dark:bg-surface-alt">
+                    class="w-full text-xs text-center text-gray-900 rounded-lg dark:bg-gray-300">
                     <option selected disabled value="">{{ __('Switch Employee') }}</option>
                     @foreach (Auth::user()->employer->employees as $employee)
                         <option @selected($employee->id == $order->employee_id) value="{{ $employee->id }}">{{ $employee->user->name }}
@@ -71,18 +71,14 @@
             </td>
         @endif
 
-        <td class="w-full col-span-3 md:w-32">
+        <td class="w-full col-span-3 md:w-40">
             <form class="relative h-9 md:p-4 md:h-0">
                 <select wire:loading.attr='disabled' wire:model='form.status' wire:change='updateStatus()'
-                    class="absolute inset-0 z-10 opacity-0">
+                    class="absolute  inset-0 h-9 text-center border-none md:h-fit p-2 w-full md:w-40 text-xs  rounded-full z-10 {{ $this->order->status->color() }}">
                     @foreach (OrderStatus::cases() as $status)
                         <option value="{{ $status->value }}">{{ $status->label() }}</option>
                     @endforeach
                 </select>
-                <p
-                    class="absolute inset-0 h-9 flex justify-center items-center  md:h-fit p-2 w-full md:w-28 text-xs  rounded-full -z-10 {{ $this->order->status->color() }}">
-                    {{ $this->order->status->label() }}
-                </p>
 
             </form>
         </td>
@@ -95,8 +91,8 @@
                             <x-icons.ellipsis-horizontal class="size-8"></x-icons.ellipsis-horizontal>
                         </button>
                     </x-dropdown.toggle>
-                    <x-dropdown.body>
-                        <x-modal.edit-order></x-modal.edit-order>
+                    <x-dropdown.body class="dark:bg-surface-dark">
+                        <x-modal.edit-order />
                         <x-dropdown.button wire:click="$dispatch('delete-order',{order_id:{{ $this->order->id }}})"
                             class="!text-red-500">{{ __('Delete') }}</x-dropdown.button>
                         <button></button>
