@@ -26,7 +26,7 @@
                 </a>
             </div>
         </td>
-        <td class="md:p-4">
+        <td class="col-span-2 md:p-4">
             <div class="flex flex-col gap-1 text-sm">
                 <x-icons.shopping-cart class="md:hidden"></x-icons.shopping-cart>
                 <p>{{ $order->product->name }}</p>
@@ -51,7 +51,7 @@
                 </p>
             </div>
         </td>
-        <td class="md:min-w-32 ">
+        <td class="col-span-3 md:min-w-32 ">
             <div class="flex flex-col md:p-4 ">
                 <textarea wire:model="form.note" wire:change='updateNote()' placeholder="{{ __('Note') }}"
                     class="text-xs  [&:not(:placeholder-shown)]:border-primary dark:[&:not(:placeholder-shown)]:border-primary-dark  resize-none md:w-32 dark:bg-surface-alt">{{ $order->note }}</textarea>
@@ -99,10 +99,10 @@
                     </x-dropdown.body>
                 </x-dropdown>
             @else
-                <div>
+                <div class="flex flex-row-reverse items-center gap-3">
                     <x-modal.edit-order></x-modal.edit-order>
                     <button type="button" wire:click="$dispatch('delete-order',{order_id:{{ $this->order->id }}})"
-                        class="w-full p-2 mt-3 bg-red-500 rounded-full md:hidden s">{{ __('Delete') }}</button>
+                        class="w-full p-2 bg-red-500 rounded-full md:hidden s">{{ __('Delete') }}</button>
             @endif
         </td>
     </tr>
