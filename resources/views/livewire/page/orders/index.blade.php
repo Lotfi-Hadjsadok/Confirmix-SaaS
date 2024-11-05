@@ -7,8 +7,29 @@
         </h1>
 
     </div>
+    <div class="flex justify-end my-5">
+        <x-dropdown>
+            <x-dropdown.toggle>
+                <button class="flex items-center justify-between gap-3 px-5 py-2 rounded-md bg-surface-alt">
+                    <x-icons.chevron-down class="!size-4"></x-icons.chevron-down>
+                    Products
+                </button>
+            </x-dropdown.toggle>
+            <x-dropdown.body
+                class="!z-20 h-64 !bg-surface-alt shadow-xl !overflow-scroll  !opacity-100 dark:bg-surface-dark">
+                @foreach ($products as $product)
+                    <label class="flex items-center gap-2 px-4 py-2">
+                        <input value="{{ $product->id }}" wire:model="selectedProducts" type="checkbox">
+                        {{ $product->name }}
+                    </label>
+                @endforeach
 
-    <div x-data="{ checkAll: false }" class="w-full mt-10 border rounded-xl border-slate-300 dark:border-slate-700">
+                <button></button>
+            </x-dropdown.body>
+        </x-dropdown>
+    </div>
+    <div x-data="{ checkAll: false }" class="w-full border rounded-xl border-slate-300 dark:border-slate-700">
+
         <x-table>
             <x-table.header>
                 <tr>

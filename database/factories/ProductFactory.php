@@ -24,4 +24,11 @@ class ProductFactory extends Factory
             'name' => $this->faker->name(),
         ];
     }
+
+    public function configure()
+    {
+        return $this->afterCreating(function (Product $product) {
+            $product->employers()->attach([1]);
+        });
+    }
 }

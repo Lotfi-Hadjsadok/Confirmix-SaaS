@@ -13,11 +13,20 @@ class Index extends Component
 {
     use WithPagination, WithoutUrlPagination;
 
+
+    public $selectedProducts = [];
+
+
+    public function mount()
+    {
+        $this->selectedProducts = $this->products()->pluck('id')->toArray();
+    }
+
     public function orders()
     {
         // $credentials =
         //     array(
-        //         'email' => 'christina04@example.org',
+        //         'email' => 'gutmann.marcelina@example.com',
         //         'password' => 'admin',
         //     );
 
@@ -30,6 +39,13 @@ class Index extends Component
         return $query->paginate(5);
     }
 
+    public function products()
+    {
+        return Auth::user()->is_employee ?
+            Auth::user()->employee->employer->products :
+            Auth::user()->employer->products;
+    }
+
     public function deleteOrder(Order $order)
     {
         $order->delete();
@@ -40,7 +56,8 @@ class Index extends Component
     public function render()
     {
         return view('livewire.page.orders.index', array(
-            'orders' => $this->orders()
+            'orders' => $this->orders(),
+            'products' => $this->products()
         ));
     }
 }

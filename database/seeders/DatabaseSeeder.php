@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Employee;
 use App\Models\Employer;
+use App\Models\Product;
 use App\Models\User;
 use Database\Factories\OrderFactory;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
