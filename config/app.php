@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\Page\Orders\FilterStatus;
 use Illuminate\Support\Facades\Auth;
 
 return [
@@ -126,6 +127,7 @@ return [
     ],
     'aliases' => [
         'OrderStatus' => App\Enums\OrderStatus::class,
+        'FilterStatus' => FilterStatus::class,
         'Auth' => Auth::class,
     ]
 

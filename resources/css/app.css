@@ -8,12 +8,12 @@
  font-family: "Poppins", sans-serif;
 }
 
-
-input[type="checkbox"] {
-@apply rounded focus:ring-primary focus:ring-offset-0 text-primary ring-0 bg-surface-alt;
-}
-
-
-input,select,textarea{
+input:not([type="checkbox"]),select,textarea{
     @apply  dark:focus:!ring-surface-dark dark:focus:!border-surface-dark;
 }
+
+input[type="checkbox"],input[type="radio"] {
+    @apply rounded focus:!ring-primary focus:!ring-offset-0 text-primary ring-0 bg-surface-alt;
+}
+
+
