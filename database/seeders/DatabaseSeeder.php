@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
         // ]);
         Employee::factory()->create();
         Employer::factory()->create();
+        Product::factory()->count(5)->create();
         OrderFactory::new()->count(50)->create();
     }
 }

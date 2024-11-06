@@ -27,7 +27,7 @@ class OrderFactory extends Factory
     {
         return [
             'client_id' => Client::factory(),
-            'product_id' => Product::factory(),
+            'product_id' => rand(1, 10),
             'employee_id' => 1,
             'employer_id' => 1,
             'quantity' => $this->faker->numberBetween(1, 50),

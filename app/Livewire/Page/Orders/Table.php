@@ -22,24 +22,12 @@ class Table extends Component
             Auth::user()->employee->orders() :
             Auth::user()->employer->orders();
 
-        $query = $this->FilterByProducts($query);
-        $query = $this->FilterByStatus($query);
+        $query = $this->filters->FilterByProducts($query);
+        $query = $this->filters->FilterByStatus($query);
 
         return $query->paginate(5);
     }
 
-    public function filterByProducts($query)
-    {
-        return  $query->whereIn('product_id', $this->filters->selectedProducts);
-    }
-
-    public function filterByStatus($query)
-    {
-        if ($this->filters->selectedStatus == FilterStatus::All) {
-            return $query;
-        }
-        return $query->where('status', $this->filters->selectedStatus);
-    }
 
 
     public function deleteOrder(Order $order)

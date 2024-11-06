@@ -28,7 +28,7 @@ class Filters extends Form
     {
         // $credentials =
         //     array(
-        //         'email' => 'gutmann.marcelina@example.com',
+        //         'email' => 'jaleel11@example.com',
         //         'password' => 'admin',
         //     );
 
@@ -38,5 +38,20 @@ class Filters extends Form
         return Auth::user()->is_employee ?
             Auth::user()->employee->employer->products :
             Auth::user()->employer->products;
+    }
+
+
+
+    public function filterByProducts($query)
+    {
+        return  $query->whereIn('product_id', $this->selectedProducts);
+    }
+
+    public function filterByStatus($query)
+    {
+        if ($this->selectedStatus == FilterStatus::All) {
+            return $query;
+        }
+        return $query->where('status', $this->selectedStatus);
     }
 }

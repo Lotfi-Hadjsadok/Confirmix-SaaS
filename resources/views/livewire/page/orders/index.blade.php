@@ -6,6 +6,9 @@
             {{ __('Statistics') }}
         </h1>
 
+
+        <livewire:page.orders.stats :$filters />
+
     </div>
     <div class="flex justify-end gap-3 my-10 text-sm">
 
@@ -14,7 +17,7 @@
                 <button
                     class="flex items-center justify-center w-full gap-3 px-5 py-2 rounded-md md:w-fit bg-surface-alt">
                     <x-icons.chevron-down class="!size-4"></x-icons.chevron-down>
-                    All Status
+                    {{ $filters->selectedStatus->label() === 'All' ? 'All Status' : $filters->selectedStatus->label() }}
                 </button>
             </x-dropdown.toggle>
             <x-dropdown.body
